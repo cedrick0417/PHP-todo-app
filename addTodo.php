@@ -12,6 +12,7 @@ if (isset($_POST['submit'])) {
 
     if($query){
         echo 'Todo added succesfully ';
+        header("location: ./");
 
         echo $inputData;  
     }

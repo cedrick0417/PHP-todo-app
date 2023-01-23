@@ -9,6 +9,7 @@ if (isset($_GET["id"])) {
     $query = mysqli_query($conn, $sql);
     if ($query) {
         echo 'Todo deleted successfully';
+        header("location: ./");
     }
 }
 ?>
