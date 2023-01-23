@@ -1,3 +1,4 @@
+<?php  include './db.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,6 +16,38 @@
         <button type="submit" name="submit">Add
         </button>
     </form>
+    <?php
+    $sql = "SELECT * FROM todos";
+    $query = mysqli_query($conn, $sql);
+    ?>
+
+    <!-- create a div that shows all task that are created -->
+    <?php
+    while ($row = mysqli_fetch_assoc($query)) {
+        $id = $row['id'];
+        $task = $row['task'];
+  
+    ?>
+        <div class="todo">
+            <div class="todo-item">
+                <?php echo $task; ?>
+            </div>
+            <div class="actions">
+                <div class="delete">
+                    <a href="delete.php?id=<?php echo $id; ?>">
+                        <i class="bx bx-trash"></i>
+                    </a>
+                </div>
+                <div class="check">
+                    <a href="check.php?id=<?php echo $id; ?>">
+                        <i class="bx bx-check"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    <?php
+    }
+    ?>
 </body>
 
 </html>
