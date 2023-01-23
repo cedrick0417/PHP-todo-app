@@ -1,0 +1,5 @@
+.todo,
+.todo-item.completed {
+  text-decoration: line-through;
+  text-decoration-color: rgb(13, 9, 9);
+}

@@ -1,4 +1,4 @@
-<?php  include './db.php'; ?>
+<?php include './db.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-
+    <link rel="stylesheet" href="style.css">
     <title>TODO</title>
 </head>
 
@@ -29,12 +29,15 @@
     while ($row = mysqli_fetch_assoc($query)) {
         $id = $row['id'];
         $task = $row['task'];
-  
+        $status = $row['status'];
     ?>
-        <div class="todo">
-            <div class="todo-item">
-                <?php echo $task; ?>
-            </div>
+        <div class="todo-item <?php  
+         if($status == 'completed'){
+             echo 'completed';
+                }
+             ?>">
+            <?php  echo $task;?>
+        </div>
             <div class="actions">
                 <div class="delete">
                     <a href="delete.php?id=<?php echo $id; ?>">
@@ -46,6 +49,7 @@
                         <i class="bx bx-check"></i>
                     </a>
                 </div>
+               
             </div>
         </div>
     <?php
